@@ -1,0 +1,83 @@
+import React from "react";
+import Parent from "./Parent-Child/Parent";
+import Pa from "./Try/p";
+class State extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+     
+    }
+  }
+  render(){
+    return(
+      <>
+    <Pa/>
+    
+      </>
+    )
+}
+}
+export default State;
+
+
+
+///
+
+
+import React, {Component} from 'react';
+import Ch from './c';
+// import CardComp from './CardComponenent';
+
+class Pa extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            name:"",
+            c:""
+        }
+
+    }
+    sendDataToChild = () =>{
+        this.setState({
+            name:"Geekster",
+            c:"delshi",
+        })
+    }
+
+    render(){
+        return(
+        <>
+           
+        <Ch name={this.state.name} c={this.state.c  }/>
+                            
+        <button onClick={this.sendDataToChild}>SEND TO CHILD</button>
+                            
+                            
+                            </>
+                            
+        )
+    }
+}
+ 
+export default Pa; 
+
+
+
+//////
+
+import React, {Component} from 'react';
+// import CardComp from './CardComponenent';
+class Ch extends Component { 
+    render(){
+        return(<>
+       
+<p className='lead'>{this.props.name }</p>
+<p className='lead'>{this.props.c}</p>
+                             
+        </>
+        )
+    }
+}
+
+export default Ch; 
+
