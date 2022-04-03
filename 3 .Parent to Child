@@ -1,13 +1,8 @@
 import React from "react";
-import Parent from "./Parent-Child/Parent";
+
 import Pa from "./Try/p";
 class State extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-     
-    }
-  }
+ 
   render(){
     return(
       <>
