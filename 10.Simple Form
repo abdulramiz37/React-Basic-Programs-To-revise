@@ -1,0 +1,41 @@
+import React from "react";
+
+class State extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      title:"React Component",
+      desciption:"",
+      firstName:"",
+    }
+  }
+  updateState = () => {
+        this.setState({
+          title:"State Component",
+          desciption:"this."
+        })
+  }
+  changeName = e => {
+  this.setState({firstName:e.target.value});
+  console.log(e.target.value);
+}
+onSubmit = e  =>{
+e.preventDefault();
+document.write(this.state.firstName)
+}
+
+  render(){
+    return(
+      <>
+      <h2>{this.state.title}</h2>
+      <p>loremshahbdsa
+      <input placeholder="Name" value={this.state.firstName} onChange={this.changeName} />
+      </p>
+      <p value={this.state.firstName} onChange={this.changeName}></p>
+    
+      <button onClick={this.onSubmit} >Update Ui</button>
+      </>
+    )
+}
+}
+export default State;
