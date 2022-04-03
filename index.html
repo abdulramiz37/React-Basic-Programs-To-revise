@@ -1,0 +1,32 @@
+
+// Update State in rEact by using state and use state
+
+import React from "react";
+
+class State extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      title:"React Component",
+      desciption:"",
+    }
+  }
+  updateState = () => {
+        this.setState({
+          title:"State Component",
+          desciption:"this."
+        })
+  }
+  render(){
+    return(
+      <>
+      <h2>{this.state.title}</h2>
+      <p>loremshahbdsa
+
+      </p>
+      <button onClick={this.updateState} >Update Ui</button>
+      </>
+    )
+}
+}
+export default State;
