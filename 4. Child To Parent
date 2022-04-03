@@ -1,0 +1,89 @@
+import React from "react";
+import P from "./C tO p/P";
+class State extends React.Component{
+ 
+  render(){
+    return(
+      <>
+    <P/>
+    
+      </>
+    )
+}
+}
+export default State;
+
+
+////
+
+
+import React, {Component} from 'react';
+
+// import B from './B';
+import C from './C';
+class P extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            brandName:"ramiz",
+            brandModel:"kxnxk"
+        }
+
+    }
+    updateState =(name,model) => {
+        this.setState({
+            brandName:name,
+            brandModel:model,  
+        })
+    }
+  
+    render(){
+        return( 
+          <>
+           
+           <C updateState={this.updateState}/> 
+           
+                                
+                            <div className='card-footer'>
+                                <p className='lead'>{this.state.brandName}</p>
+                                <p className='lead'>{this.state.brandModel}</p>
+       
+             </div>
+          </>
+                            
+        )
+    }
+}
+
+ 
+export default P; 
+
+
+////
+
+import React, {Component} from 'react';
+
+class C extends Component { 
+    constructor(props){
+        super(props);
+        this.state= {
+            brandName:"Apple",
+            modelname:"Iphone 13 pro"
+        }
+    }
+    sendData = () =>{
+        this.props.updateState(this.state.brandName,this.state.modelname);
+    }
+    render(){
+        return(<>
+           
+                                <h2>B Component</h2>
+
+                            
+                              <button className='btn btn-primary'onClick={this.sendData}>Send Data to Parent</button>
+        </>
+        )
+        }
+}
+
+export default C; 
