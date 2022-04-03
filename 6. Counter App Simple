@@ -1,0 +1,38 @@
+import React from "react";
+
+class State extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      title:"React Component",
+      desciption:0,
+    }
+  }
+  updateState = () => {
+        this.setState({
+          title:"State Component",
+          desciption:this.state.desciption +1,
+        })
+  }
+
+  updateStat = () => {
+    this.setState({
+      title:"State Component",
+      desciption:this.state.desciption -1,
+    })
+}
+  render(){
+    return(
+      <>
+      <h2>{this.state.title}</h2>
+      <p>{this.state.desciption}
+
+      </p>
+      <button onClick={this.updateState} >Update Ui</button>
+      <button onClick={this.updateStat} > Ui</button>
+    
+      </>
+    )
+}
+}
+export default State;
