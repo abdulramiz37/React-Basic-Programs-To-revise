@@ -1,0 +1,109 @@
+// index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import {BrowserRouter} from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
+
+
+/// App.js
+
+
+import React from 'react';
+import Home from './React-Router-dom/Home';
+ import About from './React-Router-dom/About';
+import Contact from './React-Router-dom/Contact';
+import {Route, Routes} from 'react-router-dom';
+import Navigation from './React-Router-dom/Navigation';
+
+
+
+
+class Abdul extends React.Component {
+  render(){
+   
+
+    return (
+      <div className="App">
+         
+<Navigation/>
+     <Routes>
+       <Route path='/about' element={<About/>}/>
+       <Route path='/' element={<Home/>}/>
+       <Route path='/contact' element={<Contact/>}/>
+     </Routes>
+      
+  
+    </div>
+  );
+
+}
+}
+
+export default Abdul;
+
+
+/// About.js
+
+import React,{Component} from "react";
+
+
+class About extends Component{
+    render(){
+        return(
+            <div>
+dnsjkdvsNvskn
+            </div>
+        )
+    }
+}
+export default About;
+
+
+//// Home.js
+
+import React,{Component} from "react";
+
+
+class Home extends Component{
+    render(){
+        return(
+            <div>
+            home
+
+            </div>
+        )
+    }
+}
+export default Home;
+
+/// Navigation.js
+
+import React  from "react";
+
+import { Link } from "react-router-dom";
+
+const Navigation = () =>{
+    return(
+        <nav>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            
+        </nav>
+    )
+}
+
+export default Navigation;
