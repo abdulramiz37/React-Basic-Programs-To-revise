@@ -1,0 +1,122 @@
+//// App.js
+
+import React from "react";
+import A from "./ContextApi/A";
+
+class State extends React.Component{
+ 
+  render(){
+    return(
+      <>
+     {<A/>}
+    
+      </>
+    )
+}
+}
+export default State;
+
+///// A.js
+
+import React, {Component} from "react";
+import B from "./B";
+import myContext  from "./myContext";
+
+
+class A extends Component {
+    constructor(props){
+        super(props);
+        this.state = {     
+            name:"",
+        };
+
+    }
+    updateset = () =>{
+        this.setState({
+            name:"Geekster",
+        })
+    }
+    render(){
+        return(
+            <div>
+                <h2>A Component</h2>
+                <myContext.Provider value={this.state}>
+                <B/>
+                </myContext.Provider>
+                <button className="btn btn-primary" onClick={this.updateset}> send data to comonent</button>
+            </div>
+        )
+    }
+}
+export default A;
+
+
+/// B.js
+
+import React, {Component} from "react";
+import myContext from "./myContext";
+import C from "./C";
+
+class B extends Component {
+    render(){
+        return(
+            <div>
+                <h2>B Component</h2>
+                <C/>
+            </div>
+        )
+    }
+}
+export default B;
+
+
+//// C.js
+
+import React, {Component} from "react";
+import D from "./D";
+
+class C extends Component {
+    render(){
+        return(
+            <div >
+                <h2>C Component</h2>
+                <D/>
+
+            </div>
+        )
+    }
+}
+export default C;
+
+
+
+/////D.js
+
+
+import React, {Component} from "react";
+import myContext from "./myContext";
+
+class D extends Component {
+    render(){
+        return(
+            <div >
+                <h2>D Component</h2>
+                <myContext.Consumer>
+                    {(contextData)=>{
+                        return  ( <h3>{contextData.name}</h3>)
+                    }
+                }
+                </myContext.Consumer>
+            </div>
+        )
+    }
+}
+export default D;
+
+
+//// mycontext.js
+
+import React from "react";
+
+const myContext = React.createContext()
+export default myContext;
