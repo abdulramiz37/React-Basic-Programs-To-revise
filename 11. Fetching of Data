@@ -1,0 +1,80 @@
+import React, { Component } from "react";
+import "./App.css";
+import ChildTwo from "./ChildTwo";
+
+class FetchDataDisplay extends Component {
+
+
+  constructor() {
+    super();
+    this.state = {
+      data: [{}],
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    this.setState({ loading: true });
+   
+
+    fetch("https://reqres.in/api/users")
+      .then((res) => res.json())
+      .then((result) => {
+        this.setState({ data: result.data });
+      });
+  };
+
+ 
+
+  render() {
+    console.log(this.state.data);
+    return (
+      <div className="App">
+        <header className="App-header">
+          hellooo
+          <button onClick={this.fetchData}>fetch data</button>
+          {this.state.data.map((geekster, index) => {
+           
+            return (
+              <ChildTwo
+                key={index}
+                first_name={geekster.first_name}
+                email={geekster.email}
+                img={geekster.avatar}
+                last_name={geekster.last_name}
+              />
+            );
+          })}
+        </header>
+      </div>
+    );
+  }
+}
+
+export default FetchDataDisplay;
+
+
+
+//// ChildTwo.js
+
+
+import React, { Component } from "react";
+
+export default class ChildTwo extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <small>{this.props.first_name}</small>
+        <small>{this.props.last_name}</small>
+        <img src={this.props.img} />
+        <p>{this.props.email}</p>
+      </div>
+    );
+  }
+}
