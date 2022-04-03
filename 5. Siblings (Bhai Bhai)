@@ -1,0 +1,137 @@
+// App.js
+
+import React from "react";
+import Home from "./Coomunication/Home/Home";
+class State extends React.Component{
+ 
+  render(){
+    return(
+      <>
+    <Home/>
+    
+      </>
+    )
+}
+}
+export default State;
+
+
+/// Home.js
+
+import React, {Component} from 'react';
+import Client from '../Client/Client';
+import Server2 from '../Server2/Server2';
+
+
+class Home extends Component {
+    constructor(props){
+        super(props);
+            this.state={
+                clientData:"SBKJDHDSJ",
+                serverData:"",
+            }
+        }
+    updateClientData = (data) =>{
+        this.setState({
+            clientData:data,
+        })
+
+    }
+    updateServerData = (data1) =>{
+        this.setState({
+            serverData:data1,
+        })
+
+    }
+
+
+
+    render(){
+        return(
+           <>
+                        <Client updateClientData={this.updateClientData}  serverData={this.state.serverData}/>
+                
+                <Server2 clientData={this.state.clientData} updateServerData={this.updateServerData}/>
+                </>
+                   
+
+                   
+        )
+    }
+}
+
+export default Home; 
+
+
+////  Sever2.js
+
+
+import React, {Component} from 'react';
+
+class Server2 extends Component {
+    constructor(props){
+        super(props);
+        this.serverData = React.createRef()
+        // this.h2Ref = React.createRef()
+    }
+    getServerData = () =>{
+        // alert(this.serverData.current.value)
+        // this.h2Ref.current.innerText ="Client Com Changed";
+        this.props.updateServerData(this.serverData.current.value)
+    }
+    render(){
+        return(
+           <>
+                            <h2> Server Component</h2>
+                       
+                                <input ref={this.serverData}
+                                type="text" placeholder='server Msg'/>
+                               
+                                <button onClick={this.getServerData} className='btn btn-info'>Export</button>
+                              
+                            <p>{this.props.clientData} </p>
+                                </>
+
+                      
+        )
+    }
+}
+
+export default Server2; 
+
+
+///// Client.js
+import React, {Component} from 'react';
+
+class Client extends Component {
+    constructor(props){
+        super(props);
+        this.clentRef = React.createRef()
+        this.h2Ref = React.createRef()
+
+    }
+    getClientData = () =>{
+        // alert(this.clentRef.current.value)
+        // this.h2Ref.current.innerText ="Client Com Changed";
+        this.props.updateClientData(this.clentRef.current.value)
+    }
+    render(){
+        return(<>
+           
+                            <h2 ref={this.h2Ref}> Client Component</h2>
+                       
+                                <input 
+                                ref={this.clentRef}
+                                type="text" placeholder='Clien Msg'/>
+                                
+                                 <button className='btn btn-warning' onClick={this.getClientData}>Import</button>
+                             
+                        <p>{this.props.serverData} </p>
+                                </>
+        )
+                      
+    }
+}
+
+export default Client; 
+
