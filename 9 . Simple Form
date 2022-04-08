@@ -1,66 +1,35 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class Form extends Component {
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-         username: '',
-         Comments: '',
-         topic: 'react'
-      }
-    }
+class State extends React.Component{
+  constructor(props){
+    super(props);
+    this.clientRef = React.createRef()
 
-    handleUsernameChange = event => {
-        this.setState({
-            username: event.target.value
-        })
+    this.state={
+      first:"",
     }
-    
-    handleCommentsChange = event => {
-        this.setState({
-            Comments: event.target.value
-        })
+   
     }
-    handleTopicChange = event => {
-        this.setState({
-            Topic: event.target.value
-        })
+    getClientdata = () => {
+      // document.write(this.clientRef.current.value)
+      this.setState({
+        first:this.clientRef.current.value,
+      })
     }
-    handleSubmit = event => {
+ 
+  render(){
+    return(
+      <>
       
-        document.write(this.state.username,this.state.Comments,this.state.topic)
-        event.preventDefault()
-    }
-
-
-  render() {
-    return (
-        <form onSubmit={this.handleSubmit}>
-            <div>
-                <label>Username</label>
-                <input
-                type='text' value={this.state.username} 
-                onChange={this.handleUsernameChange}
-                />
-            </div>
-            <div>
-                <label>Comments</label>
-                <textarea value={this.state.Comments} 
-                onChange={this.handleCommentsChange}></textarea>
-            </div>
-            <div>
-                <label>Topic</label>
-                <select value={this.state.topic} onChange={this.handleTopicChange}>
-                    <option value= "react">React</option>
-                    <option value= "angular">Angular</option>
-                    <option value= "vue">Vue</option>
-                </select>
-            </div>
-            <button type='submit'>Submit</button>
-        </form>
+      <p>loremshahbdsa
+      <input
+      ref={this.clientRef} placeholder="Name" />
+      </p>
+     <p>{this.state.first}</p>
+    
+      <button onClick={this.getClientdata} >Update Ui</button>
+      </>
     )
-  }
 }
-
-export default Form;
+}
+export default State;
